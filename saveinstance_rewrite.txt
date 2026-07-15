@@ -1917,11 +1917,11 @@ do
 		-- ! exact version match is preferred, mismatched dump versions might result in saveinstance trying to save properties that your client doesn't have yet
 		local APIDUMP_FETCHERS = {
 			[1] = function()
-				local res = readfile(FULL_VERSION)
-				if res and res ~= "" and service.HttpService:JSONDecode(res) then
-					return res
-				end
-			end,
+		local res = readfile("API_DUMP.json")
+		if res and res ~= "" and service.HttpService:JSONDecode(res) then
+			return res
+		end
+	end,
 			[2] = function() -- version-history.json -> exact_match -> zbeta -> LIVE -> sibling major matches
 				local client_version_str = tostring(CLIENT_VERSION)
 
